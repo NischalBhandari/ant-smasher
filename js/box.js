@@ -195,7 +195,7 @@
 			this.element=document.createElement('button');
 			this.element.style.borderRadius="50%";
 			this.element.setAttribute('id',`ball${this.boxes}`);
-			this.element.style.backgroundImage=`url('../ant smasher/images/ant.gif')`;
+			this.element.style.backgroundImage=`url('./images/ant.gif')`;
 			this.element.style.backgroundRepeat="no-repeat";
 			this.element.style.border="none";
 			this.element.style.backgroundSize="cover";
@@ -207,7 +207,7 @@
 			this.parentElement.appendChild(this.element);
 			var that=this;
 			this.element.onclick=function(){
-				that.element.style.backgroundImage=`url('../ant smasher/images/ghost.gif')`;
+				that.element.style.backgroundImage=`url('./ant smasher/images/ghost.gif')`;
 /*				that.element.style.height="0px";
 				that.element.style.width="0px";*/
 				that.active=null;
