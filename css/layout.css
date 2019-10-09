@@ -1,0 +1,35 @@
+
+}
+
+.header-wrapper{
+
+}
+.body-wrapper{
+
+}
+.footer-wrapper{
+
+}
+.clearfix::after,.clearfix::before{
+	content:"";
+	clear:both;
+	display:table;
+}
+.main-container{
+	width:100%;
+}
+
+.flipper{
+	-webkit-transform:scaleX(-1);
+	transform:scaleX(-1);
+}
+.main-container span{
+	display:inline-block;
+	background-color:red;
+	color:white;
+	font-size:20px;
+}
+
+.finished{
+	font-size:80px;
+}
