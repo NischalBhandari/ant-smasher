@@ -42,7 +42,7 @@
 				if(that.array[i].active){
 				for(var j=0;j<that.numOfBoxes;j++){
 
-					if(that.array[i].grid===that.array[j].grid && that.array[j].active ){
+					if(that.array[i].grid===that.array[j].grid  && that.array[j].active ){
 					if(i!==j){
 					if(that.array[i].x < that.array[j].x  + that.array[j].width && that.array[i].x + that.array[i].width > that.array[j].x && that.array[i].y < that.array[j].y + that.array[j].height && that.array[i].y + that.array[i].height > that.array[j].y)
 						{
@@ -119,6 +119,7 @@
 		this.mass=1;
 		var that=this;
 		this.momentum=1;
+		this.orientation=1;
 
 		this.init=function(){
 			this.randomize();
@@ -137,42 +138,42 @@
 				
 			},4);
 
-			setInterval(function(){
+/*			setInterval(function(){
 				that.makeGrid();
-			},8);
+			},8);*/
 			return this;
 
 		}
 		this.makeGrid=function(){
 
 
-			if(this.x<300 & this.y<300){
+/*			if(this.x<300 & this.y<300){
 				this.grid=1;
 			}
 			else if(this.x<300 && this.y>300){
 				this.grid=2;
 			}
 			else if(this.x<=600 && this.x>=300 && this.y<300){
-				this.grid=3;
+				this.grid=2;
 			}
 			else if(this.x<=600 && this.x>=300 && this.y>300){
-				this.grid=4;
+				this.grid=3;
 			}
 			else if(this.x>600 && this.x<=1000 && this.y<300){
-				this.grid=5;
+				this.grid=3;
 			}
 			else if(this.x>600 && this.x<=1000 && this.y>600){
-				this.grid=6;
+				this.grid=4;
 			}
 			else{
-				this.grid=7;
-			}
+				this.grid=4;
+			}*/
 		}
 
 
 		this.randomize=function(){
 			var randomNumX=Math.random();
-			 	randomNumX=randomNumX*document.getElementById('app').clientWidth-30;
+			 	randomNumX=randomNumX*document.getElementById('app').clientWidth-50;
 				randomNumX=Math.ceil(randomNumX);
 			var randomNumY=Math.random();
 				randomNumY=randomNumY*600;
@@ -207,7 +208,7 @@
 			this.parentElement.appendChild(this.element);
 			var that=this;
 			this.element.onclick=function(){
-				that.element.style.backgroundImage=`url('./ant smasher/images/ghost.gif')`;
+				that.element.style.backgroundImage=`url('./images/ghost.gif')`;
 /*				that.element.style.height="0px";
 				that.element.style.width="0px";*/
 				that.active=null;
@@ -237,8 +238,10 @@
 
 		this.moveBoxes=function(){
 			this.x=this.x+this.dx*(this.momentum);
-			if(this.x>(document.getElementById('app').clientWidth-30)||this.x<0){
+			if(this.x>(document.getElementById('app').clientWidth-50)||this.x<0){
 				this.dx*=-1;
+				this.element.style.transform=`scaleX(${this.orientation})`;
+				this.orientation*=-1;
 			}
 			this.y=this.y+this.dy*(this.momentum);
 			if(this.y>600|| this.y<0){
@@ -248,11 +251,10 @@
 
 		this.collide=function( ){
 			this.dx*=-1;
+			this.element.style.transform=`scaleX(${this.orientation})`;
+			this.orientation*=-1;
 			this.dy*=-1;
 
-		}
-		this.smashed=function(){
-			this.element.style.backgroundColor="green";
 		}
 	}
 
